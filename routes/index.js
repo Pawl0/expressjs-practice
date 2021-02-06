@@ -2,17 +2,14 @@ const express = require('express')
 const router = express.Router()
 
 const profiles = {
-    dkwon: {
-        name: 'dan kwon',
-        company: 'self',
-        languages: ['javascript', 'switft', 'python']
-    },
     sjobs: {
+        image: '/images/sjobs.jpg',
         name: 'steve jobs',
         company: 'apple',
         languages: ['objective-c', 'switft', 'c++']
     },
     bgates: {
+        image: '/images/bgates.jpg',
         name: 'bill gates',
         company: 'microsoft',
         languages: ['c', 'c#', 'java']
