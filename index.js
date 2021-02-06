@@ -33,6 +33,6 @@ const register = require('./routes/register');
 app.use('/', indexRouter)
 app.use('/register', register)
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running at http://localhost:${port}`)
 })
