@@ -7,27 +7,11 @@ const port = 3000
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'mustache')
 app.engine('mustache', hoganMiddleware.__express)
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const indexRouter = require('./routes/index');
 
-app.get('/test', (req, res) => {
-    res.send('Teste!')
-  })
-
-app.get('/json', (req, res) => {
-    const data = {
-        key1: "value1",
-        key2: "value2",
-        key3: "value3",
-    }
-    res.json(data);
-})
-
-app.get('/home', (req, res, next) => {
-    res.render('home', null)
-})
+app.use('/', indexRouter)
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`)
