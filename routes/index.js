@@ -68,7 +68,6 @@ router.get('/redirect', (req, res) => {
   
   // Use 2 parameters
   router.get('/:profile/:username', (req, res) => {
-    const profile = req.params.profile
     const username = req.params.username
     const currentProfile = profiles[username]
 
@@ -81,8 +80,29 @@ router.get('/redirect', (req, res) => {
         return
     }
 
+    currentProfile.timestamp = req.timestamp
+
     // template and data being rendered
     res.render('profile', currentProfile)
+  })
+
+  // show saved profiles
+  router.get('/profiles', (req, res) => {
+
+    const keys = Object.keys(profiles)
+
+    const list = []
+
+    keys.forEach(key => {
+        list.push(profiles[key])
+    })
+
+    const data = {
+        profiles: list,
+        timestamp: req.timestamp
+    }
+    // template and data being rendered
+    res.render('profiles', data)
   })
 
   // Query example (/query?name=name&occupation=occupation)

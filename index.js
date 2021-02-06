@@ -15,6 +15,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+// Middleware (every request is going to have a timestamp for example)
+const timestamp = (req, res, next) => {
+  const timestamp = new Date()
+  req.timestamp = timestamp
+  next()
+}
+
+app.use(timestamp)
+//
+
 // import routes
 const indexRouter = require('./routes/index');
 const register = require('./routes/register');
