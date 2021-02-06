@@ -5,12 +5,14 @@ const profiles = {
     sjobs: {
         image: '/images/sjobs.jpg',
         name: 'steve jobs',
+        username: 'sjobs',
         company: 'apple',
         languages: ['objective-c', 'switft', 'c++']
     },
     bgates: {
         image: '/images/bgates.jpg',
         name: 'bill gates',
+        username: 'bgates',
         company: 'microsoft',
         languages: ['c', 'c#', 'java']
     }
@@ -32,7 +34,7 @@ router.post('/addprofile', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    res.send('Hello from the routes folder!')
+    res.redirect('/home')
   })
   
   router.get('/test', (req, res) => {
